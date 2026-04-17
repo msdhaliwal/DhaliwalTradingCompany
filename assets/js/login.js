@@ -20,7 +20,6 @@ function HandleLoginAction(e) {
 	const password = document.querySelector('#password')?.value;
 
 	if (email && password) {
-		console.log('sending request');
 		fetch(`http://localhost:3000/api/client/v1/auth/login`, {
 			method: 'POST',
 			headers: {
@@ -30,10 +29,9 @@ function HandleLoginAction(e) {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log('data :>> ', data);
-				const login_token = data?.data?.login_token;
-				console.log('login_token :>> ', login_token);
+				const { login_token, employee } = data?.data ?? {};
 				localStorage.setItem('login_token', login_token);
+				localStorage.setItem('employee', employee);
 				window.location.href = 'dashboard.html';
 			})
 			.catch((error) => {

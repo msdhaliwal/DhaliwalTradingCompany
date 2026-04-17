@@ -1,61 +1,4 @@
-let inventory = []
-/* [
-	{
-		id: 101,
-		name: 'Coca Cola 500ml',
-		category: 'Soft Drink',
-		hsn: '22021010',
-		quantity: 240,
-		lastUpdated: '2026-04-08',
-		notes: 'Good condition',
-	},
-	{
-		id: 102,
-		name: 'Sprite 1L',
-		category: 'Soft Drink',
-		hsn: '22021010',
-		quantity: 85,
-		lastUpdated: '2026-04-09',
-		notes: '',
-	},
-	{
-		id: 103,
-		name: 'Red Bull Energy',
-		category: 'Energy Drink',
-		hsn: '22021090',
-		quantity: 12,
-		lastUpdated: '2026-04-07',
-		notes: 'Low stock',
-	},
-	{
-		id: 104,
-		name: 'Thums Up 250ml',
-		category: 'Soft Drink',
-		hsn: '22021010',
-		quantity: 0,
-		lastUpdated: '2026-04-05',
-		notes: 'Out of stock',
-	},
-	{
-		id: 105,
-		name: 'Maaza Mango 600ml',
-		category: 'Juice',
-		hsn: '22029990',
-		quantity: 65,
-		lastUpdated: '2026-04-09',
-		notes: '',
-	},
-	{
-		id: 106,
-		name: 'Bisleri 1L',
-		category: 'Water',
-		hsn: '22011010',
-		quantity: 180,
-		lastUpdated: '2026-04-08',
-		notes: '',
-	},
-]; */
-
+let inventory = [];
 let editId = null;
 
 function renderStats() {
@@ -118,27 +61,27 @@ function renderMobileCards(filtered) {
 		// }
 
 		html += `
-                <div class="drink-card rounded-3xl p-6 border border-zinc-700">
-                    <div class="flex justify-between">
-                        <div>
-                            <h4 class="font-semibold text-lg">${item.name}</h4>
-                            <p class="text-xs text-zinc-400 mt-1 font-mono">HSN: ${item.hsn}</p>
-                        </div>
-                        ${statusHTML}
-                    </div>
-                    <div class="mt-8 flex items-end justify-between">
-                        <div>
-                            <p class="text-xs text-zinc-400">Quantity</p>
-                            <p class="text-4xl font-bold text-orange-400">${item.quantity}</p>
-                        </div>
-                        <div class="flex gap-2">
-                            <button onclick="editItem(${item.id}); event.stopImmediatePropagation()" 
-                                    class="w-11 h-11 bg-zinc-800 hover:bg-orange-500 hover:text-black rounded-2xl flex items-center justify-center text-xl">✏️</button>
-                            <button onclick="deleteItem(${item.id}); event.stopImmediatePropagation()" 
-                                    class="w-11 h-11 bg-zinc-800 hover:bg-red-500 hover:text-white rounded-2xl flex items-center justify-center text-xl">🗑️</button>
-                        </div>
-                    </div>
-                </div>`;
+			<div class="drink-card rounded-3xl p-6 border border-zinc-700">
+					<div class="flex justify-between">
+							<div>
+									<h4 class="font-semibold text-lg">${item.name}</h4>
+									<p class="text-xs text-zinc-400 mt-1 font-mono">HSN: ${item.hsn}</p>
+							</div>
+							${statusHTML}
+					</div>
+					<div class="mt-8 flex items-end justify-between">
+							<div>
+									<p class="text-xs text-zinc-400">Quantity</p>
+									<p class="text-4xl font-bold text-orange-400">${item.quantity}</p>
+							</div>
+							<div class="flex gap-2">
+									<button onclick="editItem(${item.id}); event.stopImmediatePropagation()" 
+													class="w-11 h-11 bg-zinc-800 hover:bg-orange-500 hover:text-black rounded-2xl flex items-center justify-center text-xl">✏️</button>
+									<button onclick="deleteItem(${item.id}); event.stopImmediatePropagation()" 
+													class="w-11 h-11 bg-zinc-800 hover:bg-red-500 hover:text-white rounded-2xl flex items-center justify-center text-xl">🗑️</button>
+							</div>
+					</div>
+			</div>`;
 	});
 
 	container.innerHTML = html;
@@ -157,19 +100,19 @@ function renderDesktopTable(filtered) {
 					: 'text-emerald-400';
 
 		html += `
-                <tr class="hover:bg-zinc-800/70">
-                    <td class="px-6 py-5 font-medium">${item.name}</td>
-                    <td class="px-6 py-5"><span class="px-4 py-1 bg-zinc-800 text-xs rounded-3xl">${item.category}</span></td>
-                    <td class="px-6 py-5 font-mono text-zinc-300">${item.hsn}</td>
-                    <td class="px-6 py-5 font-semibold ${status}">${item.quantity}</td>
-                    <td class="px-6 py-5 text-xs text-zinc-400">${item.lastUpdated}</td>
-                    <td class="px-6 py-5">
-                        <div class="flex gap-3">
-                            <button onclick="editItem(${item.id}); event.stopImmediatePropagation()" class="hover:text-orange-400">Edit</button>
-                            <button onclick="deleteItem(${item.id}); event.stopImmediatePropagation()" class="text-red-400 hover:text-red-500">Delete</button>
-                        </div>
-                    </td>
-                </tr>`;
+			<tr class="hover:bg-zinc-800/70">
+					<td class="px-6 py-5 font-medium">${item.name}</td>
+					<td class="px-6 py-5"><span class="px-4 py-1 bg-zinc-800 text-xs rounded-3xl">${item.category}</span></td>
+					<td class="px-6 py-5 font-mono text-zinc-300">${item.hsn}</td>
+					<td class="px-6 py-5 font-semibold ${status}">${item.quantity}</td>
+					<td class="px-6 py-5 text-xs text-zinc-400">${item.lastUpdated}</td>
+					<td class="px-6 py-5">
+							<div class="flex gap-3">
+									<button onclick="editItem(${item.id}); event.stopImmediatePropagation()" class="hover:text-orange-400">Edit</button>
+									<button onclick="deleteItem(${item.id}); event.stopImmediatePropagation()" class="text-red-400 hover:text-red-500">Delete</button>
+							</div>
+					</td>
+			</tr>`;
 	});
 	tbody.innerHTML = html;
 }
