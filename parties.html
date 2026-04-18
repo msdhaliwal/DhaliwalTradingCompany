@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parties - DTC</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="./assets/js/common.js"></script>
+  <script src="./assets/js/tailwind.js"></script>
+  <link rel="stylesheet" href="./assets/css/font-awesome.min.css">
 
   <style>
     body {
@@ -392,21 +393,6 @@
       document.getElementById('partyModal').classList.remove('hidden');
       document.getElementById('partyModal').classList.add('flex');
     }
-
-    // Mobile Sidebar
-    const menuBtn = document.getElementById('menuBtn');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.createElement('div');
-    overlay.id = 'overlay';
-    overlay.className = 'fixed inset-0 bg-black/50 hidden md:hidden z-40';
-    document.body.appendChild(overlay);
-
-    function openSidebar() { sidebar.classList.remove('-translate-x-full'); overlay.classList.remove('hidden'); }
-    function closeSidebar() { sidebar.classList.add('-translate-x-full'); overlay.classList.add('hidden'); }
-
-    menuBtn.addEventListener('click', openSidebar);
-    overlay.addEventListener('click', closeSidebar);
-
     // Initialize
     renderParties();
   </script>

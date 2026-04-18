@@ -1,11 +1,3 @@
-/* elements */
-const menuBtn = document.querySelector('#menuBtn');
-const sidebar = document.querySelector('#sidebar');
-const overlay = document.createElement('div');
-/* event listners */
-menuBtn.addEventListener('click', OpenSidebar);
-overlay.addEventListener('click', CloseSidebar);
-
 window.addEventListener('load', () => {
 	fetch(`http://localhost:3000/api/client/v1/products`, {
 		method: 'GET',
@@ -42,9 +34,13 @@ function RenderProducts() {
 	products.forEach((product) => {
 		const row = document.createElement('tr');
 		row.className = `hover:bg-gray-50 ${!product.active ? 'opacity-60' : ''}`;
+		const qty =
+			product.quantity > 1000
+				? `${parseInt(product.quantity / 1000)}.${product.quantity % 1000} L`
+				: `${product.quantity} ml`;
 		row.innerHTML = `
       <td class="px-6 py-5 font-medium">${product.name}</td>
-      <td class="px-6 py-5 font-medium">${product.quantity}</td>
+      <td class="px-6 py-5 font-medium">${qty}</td>
       <td class="px-6 py-5 font-medium">${product.pieces}</td>
       <td class="px-6 py-5 font-mono text-gray-600">${product.hsn_code}</td>
       <td class="px-6 py-5 font-mono text-gray-600">${product.sku}</td>
@@ -159,18 +155,4 @@ function ToggleProductStatus(id, isActive) {
 		product.active = isActive;
 		RenderProducts();
 	}
-}
-
-overlay.id = 'overlay';
-overlay.className = 'fixed inset-0 bg-black/50 hidden md:hidden z-40';
-document.body.appendChild(overlay);
-
-function OpenSidebar() {
-	sidebar.classList.remove('-translate-x-full');
-	overlay.classList.remove('hidden');
-}
-
-function CloseSidebar() {
-	sidebar.classList.add('-translate-x-full');
-	overlay.classList.add('hidden');
 }

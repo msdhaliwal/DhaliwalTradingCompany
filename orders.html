@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orders - DTC</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="./assets/js/common.js"></script>
+  <script src="./assets/js/tailwind.js"></script>
+  <link rel="stylesheet" href="./assets/css/font-awesome.min.css">
 
   <style>
     body {
@@ -33,9 +34,8 @@
   <div class="flex h-screen overflow-hidden">
 
     <!-- Sidebar (Desktop: fixed, Mobile: slide-in) -->
-    <div id="sidebar" class="sidebar w-64 bg-white border-r border-gray-200 flex-shrink-0 
-                          fixed md:static inset-y-0 left-0 z-50 
-                          transform -translate-x-full md:translate-x-0">
+    <div id="sidebar"
+      class="sidebar w-64 bg-white border-r border-gray-200 flex-shrink-0 fixed md:static inset-y-0 left-0 z-50  transform -translate-x-full md:translate-x-0">
 
       <!-- Sidebar Header -->
       <div class="p-6 border-b">
@@ -100,34 +100,6 @@
 
   <!-- Mobile Overlay -->
   <div id="overlay" class="fixed inset-0 bg-black/50 hidden md:hidden z-40"></div>
-
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-
-    function openSidebar() {
-      sidebar.classList.remove('-translate-x-full');
-      overlay.classList.remove('hidden');
-      overlay.classList.add('flex');
-    }
-
-    function closeSidebar() {
-      sidebar.classList.add('-translate-x-full');
-      overlay.classList.add('hidden');
-      overlay.classList.remove('flex');
-    }
-
-    menuBtn.addEventListener('click', openSidebar);
-    overlay.addEventListener('click', closeSidebar);
-
-    // Close sidebar when clicking any nav link on mobile
-    document.querySelectorAll('#sidebar a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth < 768) closeSidebar();
-      });
-    });
-  </script>
 
 </body>
 
