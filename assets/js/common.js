@@ -5,6 +5,18 @@ window.addEventListener('load', () => {
 	}
 });
 
+/*
+// FUTURE scope
+document.querySelectorAll('#sidebar a').forEach((link) => {
+	link.addEventListener('click', (event) => {
+		const clickedLink =
+			event.currentTarget.tagName === 'A'
+				? event.currentTarget
+				: event.currentTarget.closest('a');
+		console.log('clickedLink :>> ', clickedLink.dataset.link);
+		// if (window.innerWidth < 768) closeSidebar();
+	});
+}); */
 const menuBtn = document.getElementById('menuBtn');
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
